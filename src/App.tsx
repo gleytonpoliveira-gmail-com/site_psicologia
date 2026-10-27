@@ -4,6 +4,7 @@ import { ClinicAbout } from './components/ClinicAbout';
 import { ClinicalSpecialties } from './components/ClinicalSpecialties';
 import { TherapyProcess } from './components/TherapyProcess';
 import { OnlineTherapy } from './components/OnlineTherapy';
+import { BraziliansAbroad } from './components/BraziliansAbroad';
 import { AppointmentSimulator } from './components/AppointmentSimulator';
 import { ClinicFAQ } from './components/ClinicFAQ';
 import { ClinicContact } from './components/ClinicContact';
@@ -49,7 +50,10 @@ export default function App() {
         {/* 6. Online Therapy: Security, Confidentiality & Remote Access */}
         <OnlineTherapy />
 
-        {/* 7. Interactive Appointment Assistant / Message Builder */}
+        {/* 7. Brazilians Abroad / Expatriates Psychological Care */}
+        <BraziliansAbroad />
+
+        {/* 8. Interactive Appointment Assistant / Message Builder */}
         <AppointmentSimulator />
 
         {/* 8. Frequently Asked Questions (FAQ) */}

@@ -40,7 +40,7 @@ export const ClinicFooter: React.FC = () => {
               {CLINIC_INFO.title} — {CLINIC_INFO.crp}
             </p>
             <p className="text-xs text-[#cbd5e1] max-w-md leading-relaxed mb-4">
-              Psicoterapia Cognitivo-Comportamental (TCC) e Análise do Comportamento Aplicada (ABA) online para todo o Brasil e presencial.
+              Psicoterapia Cognitivo-Comportamental (TCC) e Análise do Comportamento Aplicada (ABA) online para pacientes em todo o Brasil e brasileiros no exterior.
             </p>
 
             {/* Visitor Counter */}
@@ -60,6 +60,7 @@ export const ClinicFooter: React.FC = () => {
               <li><a href="#especialidades" className="hover:text-white hover:underline">Especialidades</a></li>
               <li><a href="#processo" className="hover:text-white hover:underline">Como Funciona</a></li>
               <li><a href="#online" className="hover:text-white hover:underline">Terapia Online</a></li>
+              <li><a href="#exterior" className="hover:text-white hover:underline">Brasileiros no Exterior 🌎</a></li>
               <li><a href="#faq" className="hover:text-white hover:underline">Perguntas Frequentes</a></li>
             </ul>
           </div>

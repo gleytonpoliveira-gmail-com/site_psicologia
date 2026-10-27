@@ -24,7 +24,9 @@ export const ClinicHero: React.FC<ClinicHeroProps> = ({ onScheduleClick, onExplo
               <span aria-hidden="true">·</span>
               <span className="text-[#4a6b6c]">{CLINIC_INFO.crp}</span>
               <span aria-hidden="true">·</span>
-              <span>Online & Presencial</span>
+              <span className="inline-flex items-center gap-1 text-[#354f50] bg-[#f0f4f4] px-2 py-0.5 rounded font-bold">
+                🌎 Brasil & Brasileiros no Exterior
+              </span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#354f50] text-balance leading-[1.15] mb-6">
@@ -32,7 +34,7 @@ export const ClinicHero: React.FC<ClinicHeroProps> = ({ onScheduleClick, onExplo
             </h1>
 
             <p className="text-base sm:text-lg text-[#5f6b7c] leading-relaxed max-w-2xl mb-8">
-              Um acompanhamento psicológico estruturado em ciência e estratégia para quem busca saúde emocional, superação de desafios comportamentais e uma vida com clareza, autonomia e equilíbrio.
+              Acompanhamento psicológico estruturado em ciência e estratégia para quem busca saúde emocional, superação de desafios comportamentais e uma vida com clareza, equilíbrio e propósito — com atendimento online acolhedor para pacientes no Brasil e expatriados em todo o mundo.
             </p>
 
             {/* CTAs */}
@@ -47,20 +49,24 @@ export const ClinicHero: React.FC<ClinicHeroProps> = ({ onScheduleClick, onExplo
                 <span>Agendar pelo WhatsApp</span>
               </a>
 
-              <button
-                onClick={onExploreAbout}
+              <a
+                href="#exterior"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold text-[#4a6b6c] hover:text-[#354f50] bg-white hover:bg-[#f0f4f4] border border-[#d5dedd] rounded-lg transition-all whitespace-nowrap"
               >
-                <span>Conheça minha trajetória</span>
+                <span>Atendimento no Exterior</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </a>
             </div>
 
             {/* Trust points */}
-            <div className="pt-6 border-t border-[#e6ecec] w-full grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-medium text-[#4a6b6c]">
+            <div className="pt-6 border-t border-[#e6ecec] w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 text-xs font-medium text-[#4a6b6c]">
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-[#d4af37] shrink-0" />
                 <span>TCC baseada em evidências</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-[#d4af37] shrink-0" />
+                <span>Brasileiros no Exterior (Fusos)</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-[#d4af37] shrink-0" />

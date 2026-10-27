@@ -15,6 +15,7 @@ export const ClinicHeader: React.FC<ClinicHeaderProps> = ({ onScheduleClick }) =
     { label: 'Especialidades', href: '#especialidades' },
     { label: 'Como Funciona', href: '#processo' },
     { label: 'Terapia Online', href: '#online' },
+    { label: 'No Exterior 🌎', href: '#exterior' },
     { label: 'Dúvidas', href: '#faq' },
     { label: 'Contato', href: '#contato' },
   ];
@@ -29,7 +30,7 @@ export const ClinicHeader: React.FC<ClinicHeaderProps> = ({ onScheduleClick }) =
 
   return (
     <header className="sticky top-0 z-40 w-full bg-[#faf8f5]/95 backdrop-blur-md border-b border-[#e2e8f0] shadow-xs">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 sm:h-22 flex items-center justify-between gap-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 min-h-[76px] sm:h-24 py-2 flex items-center justify-between gap-6">
         {/* Zone 1: Vector High-Legibility Brand Logo */}
         <a 
           href="#inicio" 

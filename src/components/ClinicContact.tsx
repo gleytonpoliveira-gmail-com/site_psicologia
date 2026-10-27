@@ -109,6 +109,17 @@ export const ClinicContact: React.FC = () => {
                 <ExternalLink className="w-4 h-4 text-[#8a6d0b]" />
               </a>
 
+              {/* International Care Note */}
+              <div className="p-4 bg-[#f0f4f4] rounded-xl border border-[#d5dedd]">
+                <div className="flex items-center gap-2 text-xs font-bold text-[#354f50] mb-1">
+                  <Globe className="w-4 h-4 text-[#4a6b6c]" />
+                  <span>Brasileiros no Exterior</span>
+                </div>
+                <p className="text-xs text-[#5f6b7c] leading-relaxed">
+                  Para quem mora fora do Brasil, basta adicionar o código do país (+55) ao nos chamar no WhatsApp ou enviar seu número com DDI local no formulário ao lado.
+                </p>
+              </div>
+
               {/* Email Box */}
               <div className="p-4 bg-[#faf8f5] rounded-xl border border-[#e2e8f0]">
                 <div className="flex items-center gap-2 text-xs font-bold text-[#354f50] mb-1">
@@ -175,7 +186,7 @@ export const ClinicContact: React.FC = () => {
 
                 <div>
                   <label htmlFor="phone" className="block text-xs font-bold text-[#354f50] mb-1">
-                    WhatsApp ou Telefone *
+                    WhatsApp ou Telefone (com DDI do seu país) *
                   </label>
                   <input
                     id="phone"
@@ -185,7 +196,7 @@ export const ClinicContact: React.FC = () => {
                       setPhone(e.target.value);
                       if (errors.phone) setErrors({ ...errors, phone: undefined });
                     }}
-                    placeholder="(DDD) 99999-9999"
+                    placeholder="Ex: (86) 99999-9999 ou +351..., +1..., +44..."
                     className={`w-full p-3 bg-white border rounded-xl text-xs sm:text-sm text-[#2d3748] placeholder-[#9ca3af] focus:outline-none focus:ring-2 focus:ring-[#4a6b6c]/30 ${
                       errors.phone ? 'border-red-500' : 'border-[#d5dedd]'
                     }`}

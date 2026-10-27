@@ -2,20 +2,23 @@ import React from 'react';
 import { CLINIC_INFO } from '../data/clinicalData';
 
 interface ClinicBrandLogoProps {
-  variant?: 'header' | 'footer';
+  variant?: 'header' | 'footer' | 'badge';
   className?: string;
 }
 
 export const ClinicBrandLogo: React.FC<ClinicBrandLogoProps> = ({ variant = 'header', className = '' }) => {
-  if (variant === 'footer') {
+  // Footer / Dark background badge variant:
+  // Displays the enhanced high-definition white card badge (matching the user's uploaded badge)
+  // with prominent proportions, crisp borders, and ultra-readable typography.
+  if (variant === 'footer' || variant === 'badge') {
     return (
-      <div className={`inline-flex items-center bg-[#faf8f5] px-3.5 py-2.5 rounded-2xl shadow-xs border border-[#e2e8f0] w-fit ${className}`}>
+      <div className={`inline-flex items-center select-none transition-transform duration-200 hover:scale-[1.02] ${className}`}>
         <picture>
-          <source srcSet={CLINIC_INFO.assets.logoWebp} type="image/webp" />
+          <source srcSet={CLINIC_INFO.assets.logoBadgeWebp} type="image/webp" />
           <img
-            src={CLINIC_INFO.assets.logoWebp}
-            alt="Andréia Francisca do Nascimento - Psicóloga Clínica"
-            className="h-12 sm:h-14 w-auto object-contain"
+            src={CLINIC_INFO.assets.logoBadgePng}
+            alt="Logotipo Andréia Francisca do Nascimento - Psicóloga Clínica CRP 21/8775"
+            className="h-16 sm:h-20 md:h-22 w-auto max-w-[320px] sm:max-w-[420px] object-contain drop-shadow-md rounded-2xl"
             loading="lazy"
           />
         </picture>
@@ -23,19 +26,21 @@ export const ClinicBrandLogo: React.FC<ClinicBrandLogoProps> = ({ variant = 'hea
     );
   }
 
-  // Header default variant: uses high-contrast trimmed WEBP format with thickened, highly legible letters
+  // Header variant:
+  // Uses the ultra-crisp transparent HD format with enhanced font weight and prominent height
+  // so that every letter (ANDRÉIA, FRANCISCA DO NASCIMENTO, PSICÓLOGA CLÍNICA | CRP 21/8775)
+  // is instantly legible, high-contrast, and razor-sharp.
   return (
-    <div className={`flex items-center select-none ${className}`}>
+    <div className={`flex items-center select-none py-1 ${className}`}>
       <picture>
         <source srcSet={CLINIC_INFO.assets.logoWebp} type="image/webp" />
         <img
-          src={CLINIC_INFO.assets.logoWebp}
-          alt="Andréia Francisca do Nascimento - Psicóloga Clínica"
-          className="h-[52px] sm:h-[60px] md:h-[66px] w-auto max-w-[280px] sm:max-w-[360px] md:max-w-[420px] object-contain shrink-0"
+          src={CLINIC_INFO.assets.logoPng}
+          alt="Logotipo Andréia Francisca do Nascimento - Psicóloga Clínica CRP 21/8775"
+          className="h-14 sm:h-16 md:h-[72px] lg:h-[76px] w-auto max-w-[290px] sm:max-w-[380px] md:max-w-[460px] object-contain shrink-0 drop-shadow-2xs transition-transform hover:scale-[1.01]"
           fetchPriority="high"
         />
       </picture>
     </div>
   );
 };
-

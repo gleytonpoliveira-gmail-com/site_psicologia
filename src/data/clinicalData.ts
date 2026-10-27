@@ -168,6 +168,18 @@ export const ONLINE_BENEFITS = [
 
 export const FAQS: FAQItem[] = [
   {
+    question: 'Como funciona a psicoterapia online para quem mora fora do Brasil?',
+    answer: 'O atendimento é realizado por videochamada segura (Google Meet ou similar), com sigilo total garantido pelo CFP. Você realiza a terapia no conforto da sua casa, no seu fuso horário local e na sua língua materna (português), o que facilita a expressão autêntica de sentimentos, memórias e dores que muitas vezes são difíceis de elaborar em um segundo idioma.'
+  },
+  {
+    question: 'Como conciliamos a diferença de fuso horário?',
+    answer: 'Minha grade de atendimento conta com horários flexíveis estrategicamente distribuídos (início da manhã, tarde e horários noturnos pelo horário de Brasília) para atender com comodidade pacientes que residem na Europa, Reino Unido, Estados Unidos, Canadá, América Latina e outros países.'
+  },
+  {
+    question: 'Como é feito o pagamento para quem reside no exterior?',
+    answer: 'O pagamento é simples e seguro. Pode ser feito por transferência internacional via Wise, PayPal, cartão internacional ou por Pix (para quem ainda possui conta bancária no Brasil). Os recibos são emitidos com todos os dados profissionais do CRP.'
+  },
+  {
     question: 'Como funciona a primeira sessão de psicoterapia?',
     answer: 'A primeira sessão é dedicada ao acolhimento e escuta diagnóstica. Conversamos sobre o motivo que te trouxe à terapia, seu histórico, expectativas e definimos juntos os objetivos a serem trabalhados.'
   },
@@ -203,15 +215,18 @@ export const CLINIC_INFO = {
   googleProfileUrl: 'https://www.google.com/search?sca_esv=5a206a9c5c2a6b37&q=Psic%C3%B3loga%20Andr%C3%A9ia%20Francisca%20do%20Nascimento%20-%20CRP%2021%2F07075',
   address: 'Atendimento Online (Brasil e Exterior) e Presencial',
   assets: {
-    // User-provided enhanced logo in WebP format
-    logo: '/assets/aistudio/logo_aprimorado_trimmed.webp',
-    logoWebp: '/assets/aistudio/logo_aprimorado_trimmed.webp',
+    // Ultra-crisp enhanced logo and badge assets (HD WebP & PNG)
+    logo: '/assets/aistudio/logo_aprimorado_trimmed_hd.webp',
+    logoWebp: '/assets/aistudio/logo_aprimorado_trimmed_hd.webp',
+    logoPng: '/assets/aistudio/logo_aprimorado_trimmed_hd.png',
+    logoBadgeWebp: '/assets/aistudio/logo_aprimorado_badge_hd.webp',
+    logoBadgePng: '/assets/aistudio/logo_aprimorado_badge_hd.png',
+    logoUserEnhancedWebp: '/assets/aistudio/image_aa55a9e5_aprimorada.webp',
+    logoUserEnhancedPng: '/assets/aistudio/image_aa55a9e5_aprimorada.png',
     logoWebpFull: '/assets/aistudio/logo_aprimorado.webp',
     logoWebpSiteBg: '/assets/aistudio/logo_aprimorado_sitebg.webp',
-    logoWebpTransparent: '/assets/aistudio/logo_aprimorado_transparent.webp',
-    logoPng: '/assets/aistudio/Logotipo_aprimorado___26_Oct_2026__4.13_pm_59a77520.png',
-    logoUserRawWebp: '/assets/aistudio/Logotipo_aprimorado___26_Oct_2026__4.13_pm_59a77520.webp',
-    brainIcon: '/assets/aistudio/gemini_brain_icon.png',
+    logoWebpTransparent: '/assets/aistudio/logo_aprimorado_trimmed_hd.webp',
+    brainIcon: '/assets/aistudio/gemini_brain_transparent.png',
     photoJaleco: '/assets/aistudio/andreia1-800_af6b80ea.webp',
     photoJalecoJpg: '/assets/aistudio/andreia1-800_93b7cc97.jpg',
     photoBlazer: '/assets/aistudio/andreia2-700_2cb2a854.webp',

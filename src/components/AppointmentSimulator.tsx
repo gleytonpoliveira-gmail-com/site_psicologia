@@ -5,12 +5,14 @@ import { MessageCircle, Check, Send, Sparkles } from 'lucide-react';
 export const AppointmentSimulator: React.FC = () => {
   const [patientType, setPatientType] = useState<'adulto' | 'adolescente'>('adulto');
   const [demand, setDemand] = useState('Ansiedade e regulação emocional');
-  const [modality, setModality] = useState<'online' | 'presencial'>('online');
+  const [modality, setModality] = useState<'online' | 'exterior' | 'presencial'>('online');
+  const [abroadRegion, setAbroadRegion] = useState('Europa (Portugal, Espanha, Alemanha, etc.)');
   const [preferredShift, setPreferredShift] = useState('Qualquer período disponível');
 
   const demandsOptions = patientType === 'adulto' ? [
     'Ansiedade generalizada e crises de pânico',
     'Depressão, desânimo ou perda de sentido',
+    'Adaptação ao exterior, solidão e luto migratório',
     'TDAH no adulto, desorganização e foco',
     'Burnout e sobrecarga profissional',
     'Conflitos em relacionamentos e limites',
@@ -19,19 +21,26 @@ export const AppointmentSimulator: React.FC = () => {
     'Transtorno do Espectro Autista (TEA) / ABA',
     'TDAH, rendimento escolar e foco',
     'Ansiedade, medos e insegurança social',
+    'Adaptação escolar no exterior e bilinguismo',
     'Transtorno Opositor Desafiador (TOD)',
     'Dificuldades com limites e autorregulação',
     'Outra questão com adolescente'
   ];
 
+  const modalityText = modality === 'exterior'
+    ? `Online - Moro no Exterior (${abroadRegion})`
+    : modality === 'online'
+    ? 'Terapia Online (Brasil)'
+    : 'Atendimento Presencial';
+
   const generatedMessage = `Olá, Andréia Francisca! Gostaria de verificar disponibilidade para atendimento psicológico.
 
 • Público: ${patientType === 'adulto' ? 'Adulto' : 'Adolescente'}
 • Demanda principal: ${demand}
-• Modalidade preferida: ${modality === 'online' ? 'Terapia Online' : 'Atendimento Presencial'}
-• Melhor período: ${preferredShift}
+• Modalidade/Local: ${modalityText}
+• Horário preferencial: ${preferredShift}
 
-Aguardo orientações sobre horários e valores. Obrigado(a)!`;
+Aguardo orientações sobre horários compatíveis e valores. Obrigado(a)!`;
 
   const handleSendWhatsApp = () => {
     window.open(`https://wa.me/${CLINIC_INFO.whatsappRaw}?text=${encodeURIComponent(generatedMessage)}`, '_blank', 'noopener,noreferrer');
@@ -117,9 +126,9 @@ Aguardo orientações sobre horários e valores. Obrigado(a)!`;
             {/* Step 3: Modality */}
             <div>
               <label className="block text-xs font-bold text-[#354f50] mb-2">
-                3. Modalidade de preferência:
+                3. Onde você está localizado / Modalidade:
               </label>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mb-2.5">
                 <button
                   type="button"
                   onClick={() => setModality('online')}
@@ -129,8 +138,24 @@ Aguardo orientações sobre horários e valores. Obrigado(a)!`;
                       : 'bg-white text-[#2d3748] border-[#d5dedd] hover:border-[#4a6b6c]/50'
                   }`}
                 >
-                  <span>Online (Videochamada)</span>
-                  {modality === 'online' && <Check className="w-4 h-4" />}
+                  <span>Online (Brasil)</span>
+                  {modality === 'online' && <Check className="w-4 h-4 shrink-0" />}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setModality('exterior')}
+                  className={`p-3 rounded-xl border text-xs sm:text-sm font-semibold transition-all flex items-center justify-between ${
+                    modality === 'exterior'
+                      ? 'bg-[#354f50] text-white border-[#354f50] shadow-xs ring-2 ring-[#d4af37]/40'
+                      : 'bg-white text-[#2d3748] border-[#d5dedd] hover:border-[#4a6b6c]/50'
+                  }`}
+                >
+                  <span className="flex items-center gap-1">
+                    <span>Moro no Exterior</span>
+                    <span className="text-xs">🌎</span>
+                  </span>
+                  {modality === 'exterior' && <Check className="w-4 h-4 shrink-0 text-[#d4af37]" />}
                 </button>
 
                 <button
@@ -143,9 +168,33 @@ Aguardo orientações sobre horários e valores. Obrigado(a)!`;
                   }`}
                 >
                   <span>Presencial</span>
-                  {modality === 'presencial' && <Check className="w-4 h-4" />}
+                  {modality === 'presencial' && <Check className="w-4 h-4 shrink-0" />}
                 </button>
               </div>
+
+              {/* Sub-selection for expatriates */}
+              {modality === 'exterior' && (
+                <div className="p-3 bg-[#f0f4f4] rounded-xl border border-[#d5dedd] animate-in fade-in duration-150">
+                  <label className="block text-[11px] font-bold text-[#354f50] mb-1">
+                    Selecione seu país ou fuso horário:
+                  </label>
+                  <select
+                    value={abroadRegion}
+                    onChange={(e) => setAbroadRegion(e.target.value)}
+                    className="w-full p-2.5 bg-white border border-[#d5dedd] rounded-lg text-xs text-[#2d3748] focus:outline-none focus:ring-2 focus:ring-[#4a6b6c]/30"
+                  >
+                    <option value="Portugal (Lisboa/Porto)">Portugal (Lisboa / Porto - GMT+0/+1)</option>
+                    <option value="Reino Unido (Londres/Dublin)">Reino Unido / Irlanda (GMT+0/+1)</option>
+                    <option value="Europa Central (Alemanha, França, Espanha, Itália, etc.)">Europa Central (Alemanha, França, Espanha, Itália, etc. - CET)</option>
+                    <option value="Estados Unidos / Canadá (Costa Leste - Flórida, NY, etc.)">EUA / Canadá - Costa Leste (Flórida, NY, etc.)</option>
+                    <option value="Estados Unidos (Costa Oeste / Califórnia)">EUA - Costa Oeste (Califórnia, Texas, etc.)</option>
+                    <option value="América do Sul / Latina">América do Sul / Latina</option>
+                    <option value="Oceania (Austrália, Nova Zelândia)">Oceania (Austrália, Nova Zelândia)</option>
+                    <option value="Ásia / Japão / Oriente Médio">Ásia / Japão / Emirados Árabes</option>
+                    <option value="Outro país">Outro país</option>
+                  </select>
+                </div>
+              )}
             </div>
 
             {/* Step 4: Shift */}
