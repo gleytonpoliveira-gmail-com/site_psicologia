@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CLINIC_INFO } from '../data/clinicalData';
 import { MessageCircle, Instagram, Mail, Globe, ExternalLink, Send, CheckCircle2 } from 'lucide-react';
+import { trackContactConversion } from '../utils/analytics';
 
 export const ClinicContact: React.FC = () => {
   const [name, setName] = useState('');
@@ -20,6 +21,9 @@ export const ClinicContact: React.FC = () => {
       setErrors(newErrors);
       return;
     }
+
+    // Google Ads conversion event trigger
+    trackContactConversion();
 
     // Direct WhatsApp dispatch with user details
     const text = `Olá, Andréia! Meu nome é ${name}. Mensagem enviada pelo site:\n\n${message || 'Gostaria de agendar uma consulta.'}`;
@@ -58,6 +62,7 @@ export const ClinicContact: React.FC = () => {
                 href={`https://wa.me/${CLINIC_INFO.whatsappRaw}?text=${encodeURIComponent('Olá, Andréia! Gostaria de informações sobre atendimento psicológico.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={trackContactConversion}
                 className="flex items-center justify-between p-4 bg-[#1a9b4b] hover:bg-[#14793b] text-white rounded-xl font-semibold text-sm transition-all shadow-xs"
               >
                 <div className="flex items-center gap-3">
