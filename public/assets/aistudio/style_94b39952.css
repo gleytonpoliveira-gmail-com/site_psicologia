@@ -1,0 +1,506 @@
+/* CSS para o site da Psicóloga Andréia Nascimento — versão responsiva */
+:root {
+  --color-primary: #4a6b6c;
+  --color-primary-dark: #354f50;
+  --color-secondary: #d4af37;
+  --color-secondary-dark: #8a6d0b; /* dourado com contraste suficiente para textos pequenos */
+  --color-text: #2d3748;
+  --color-text-light: #5f6b7c;
+  --color-bg: #faf8f5;
+  --color-soft: #f0f4f4;
+  --color-white: #ffffff;
+  --font-main: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* Escalas fluidas (mínimo no celular → máximo no desktop) */
+  --fs-body: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  --fs-h1: clamp(1.9rem, 1.3rem + 2.6vw, 2.8rem);
+  --fs-h2: clamp(1.5rem, 1.1rem + 1.9vw, 2.2rem);
+  --fs-h3: clamp(1.1rem, 1rem + 0.5vw, 1.25rem);
+  --fs-lead: clamp(1.05rem, 0.98rem + 0.4vw, 1.2rem);
+  --space-section: clamp(48px, 4vw + 32px, 80px);
+  --gutter: clamp(16px, 4vw, 24px);
+  --radius: 12px;
+  --header-h: 68px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 12px);
+}
+
+body {
+  font-family: var(--font-main);
+  font-size: var(--fs-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture { display: block; max-width: 100%; height: auto; }
+p { overflow-wrap: break-word; }
+h1, h2, h3 { text-wrap: balance; overflow-wrap: break-word; }
+
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding-left: max(var(--gutter), env(safe-area-inset-left));
+  padding-right: max(var(--gutter), env(safe-area-inset-right));
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  background-color: var(--color-white);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 12px 0;
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand {
+  flex: 1 1 0;
+  min-width: 0;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: clamp(1.1rem, 0.95rem + 0.8vw, 1.3rem);
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+
+.header-cta, .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  min-height: 44px;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  transition: background-color 0.25s, color 0.25s, border-color 0.25s;
+}
+
+.header-cta, .btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: 1px solid var(--color-primary);
+}
+.header-cta:hover, .btn-primary:hover { background-color: var(--color-primary-dark); }
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+.btn-secondary:hover { background-color: var(--color-soft); }
+
+/* Botão do menu (só no mobile/tablet) */
+.nav-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0 11px;
+  background: transparent;
+  border: 1px solid #d5dedd;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 2px;
+  transition: transform 0.25s, opacity 0.25s;
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Menu: recolhido no mobile */
+.site-nav {
+  display: none;
+  order: 10;
+  flex-basis: 100%;
+  flex-direction: column;
+  border-top: 1px solid #e6ecec;
+  padding-top: 8px;
+}
+.site-nav.is-open { display: flex; }
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 500;
+  padding: 12px 4px;
+  border-bottom: 1px solid #f0f3f3;
+  transition: color 0.25s;
+}
+.site-nav a:last-child { border-bottom: 0; }
+.site-nav a:hover, .site-nav a.active { color: var(--color-primary); }
+.site-nav a.active { font-weight: 700; }
+
+@media (min-width: 900px) {
+  .header-inner { flex-wrap: nowrap; gap: 24px; }
+  .brand { flex: 0 0 auto; }
+  .nav-toggle { display: none; }
+  .site-nav {
+    display: flex;
+    order: 0;
+    flex: 1 1 auto;
+    flex-basis: auto;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: clamp(14px, 2vw, 28px);
+    border-top: 0;
+    padding-top: 0;
+  }
+  .site-nav a { padding: 6px 0; border-bottom: 0; white-space: nowrap; }
+  .site-nav a.active { box-shadow: inset 0 -2px 0 var(--color-secondary); }
+}
+
+/* ---------- Seções ---------- */
+.section { padding: var(--space-section) 0; }
+.section-soft { background-color: var(--color-soft); }
+
+.section-heading { margin-bottom: clamp(28px, 4vw, 48px); }
+.section-heading.center { text-align: center; }
+.section-heading.center h2 { max-width: 28ch; margin-left: auto; margin-right: auto; }
+.section-heading > p:not(.eyebrow) { max-width: 65ch; }
+.section-heading.center > p:not(.eyebrow) { margin-left: auto; margin-right: auto; }
+
+.eyebrow {
+  text-transform: uppercase;
+  font-size: clamp(0.75rem, 0.72rem + 0.15vw, 0.85rem);
+  letter-spacing: 0.14em;
+  color: var(--color-secondary-dark);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+h1 { font-size: var(--fs-h1); line-height: 1.2; color: var(--color-primary); margin-bottom: 20px; }
+h2 { font-size: var(--fs-h2); line-height: 1.25; color: var(--color-primary); margin-bottom: 16px; }
+
+/* ---------- Hero ---------- */
+.hero { padding: clamp(32px, 5vw, 80px) 0 clamp(40px, 5vw, 64px); }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: clamp(32px, 5vw, 56px);
+}
+
+.hero-copy { display: flex; flex-direction: column; justify-content: center; }
+
+.hero-subtitle {
+  font-size: var(--fs-lead);
+  color: var(--color-text-light);
+  margin-bottom: 28px;
+  max-width: 60ch;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.hero-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+.hero-notes span {
+  position: relative;
+  padding-left: 14px;
+}
+.hero-notes span::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.6em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+}
+
+.hero-media { display: flex; justify-content: center; }
+
+.hero-img {
+  width: 100%;
+  max-width: min(400px, 100%);
+  aspect-ratio: 4 / 5;
+  height: auto;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 20px;
+  box-shadow: 0 12px 36px rgba(74, 107, 108, 0.18);
+}
+
+@media (min-width: 860px) {
+  .hero-grid { grid-template-columns: 1.15fr 0.85fr; }
+  .hero-img { max-width: 440px; }
+}
+
+/* ---------- Cards ---------- */
+.treatment-group { margin-bottom: clamp(36px, 5vw, 56px); }
+.treatment-group:last-child { margin-bottom: 0; }
+
+.treatment-group-title {
+  color: var(--color-primary);
+  font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.5rem);
+  margin-bottom: 8px;
+  border-bottom: 2px solid var(--color-secondary);
+  display: inline-block;
+  padding-bottom: 6px;
+  font-weight: 700;
+}
+
+.card-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: clamp(16px, 2.5vw, 30px);
+  margin-top: 20px;
+}
+
+.feature-card {
+  background: var(--color-white);
+  padding: clamp(20px, 3vw, 30px);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-icon {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.feature-card h3 { font-size: var(--fs-h3); line-height: 1.3; color: var(--color-primary); margin-bottom: 8px; }
+
+.feature-card .card-subhead {
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-secondary-dark);
+  margin-bottom: 12px;
+  line-height: 1.45;
+}
+
+.feature-card p { font-size: 0.95rem; line-height: 1.65; }
+
+/* ---------- Sobre mim ---------- */
+.section-heading.align-left { margin-bottom: 0; }
+.about-meta { font-weight: 500; color: var(--color-primary); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(24px, 5vw, 56px);
+  align-items: center;
+  justify-items: center;
+}
+
+.about-photo {
+  width: clamp(220px, 60vw, 340px);
+  aspect-ratio: 1 / 1;
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.10);
+}
+
+.about-text { max-width: 62ch; justify-self: stretch; }
+.about-text p { font-size: var(--fs-lead); line-height: 1.75; }
+.about-text p + p { margin-top: 16px; }
+
+@media (min-width: 820px) {
+  .about-grid { grid-template-columns: auto 1fr; justify-items: start; }
+  .about-photo { width: clamp(260px, 30vw, 340px); }
+}
+
+/* ---------- Psicoterapia: timeline ---------- */
+.split-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(32px, 5vw, 60px);
+}
+@media (min-width: 860px) {
+  .split-layout { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+
+.timeline { display: flex; flex-direction: column; gap: 28px; }
+.timeline-item { display: flex; gap: 16px; align-items: flex-start; }
+.timeline-item h3 { font-size: var(--fs-h3); color: var(--color-primary); margin-bottom: 4px; }
+.timeline-item > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: 50%;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+/* ---------- Contato ---------- */
+.contact-wrap { max-width: 600px; text-align: center; }
+.contact-actions { display: flex; flex-direction: column; gap: 14px; }
+.contact-actions .btn { width: 100%; min-height: 52px; }
+.contact-lead { margin-bottom: 30px; }
+.contact-email {
+  margin-top: 12px;
+  background: var(--color-white);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+.contact-email p { font-weight: 600; margin-bottom: 4px; }
+.contact-email a { color: var(--color-primary); font-weight: 500; overflow-wrap: anywhere; }
+.contact-google { margin-top: 8px; }
+.contact-google a { font-size: 0.9rem; color: var(--color-text-light); text-decoration: underline; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background-color: var(--color-primary-dark);
+  color: var(--color-white);
+  padding: clamp(40px, 6vw, 60px) 0 24px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: clamp(28px, 4vw, 40px);
+  margin-bottom: 36px;
+}
+.footer-grid h3 { margin-bottom: 12px; font-size: 1.1rem; }
+.footer-grid p { font-size: 0.95rem; color: #dbe3ea; }
+.footer-grid a {
+  color: #cbd5e1;
+  text-decoration: none;
+  display: inline-block;
+  padding: 6px 0;
+  margin-bottom: 4px;
+}
+.footer-grid a:hover { color: #fff; text-decoration: underline; }
+
+.footer-bottom {
+  border-top: 1px solid #4a6b6c;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #aab6c5;
+}
+
+/* ---------- WhatsApp flutuante ---------- */
+.whatsapp-float {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  background-color: #1a9b4b;
+  color: #fff;
+  padding: 12px 20px;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  z-index: 999;
+}
+@media (min-width: 900px) {
+  .whatsapp-float { right: 30px; bottom: 30px; padding: 15px 25px; }
+}
+/* evita que o botão flutuante cubra o fim da página no celular */
+@media (max-width: 899px) {
+  .site-footer { padding-bottom: 88px; }
+}
+
+/* ---------- Contador de visitas ---------- */
+.visitor-counter {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-top: 15px;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+}
+.visitor-counter .counter-label { color: #b4c0cf; }
+.visitor-counter .counter-number {
+  color: #fff;
+  font-weight: 700;
+  background: var(--color-primary);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+/* ---------- Celulares pequenos ---------- */
+@media (max-width: 520px) {
+  .header-inner { gap: 8px 10px; }
+  .brand { font-size: 1.05rem; }
+  .button-group .btn { width: 100%; }
+  .hero-notes { flex-direction: column; gap: 8px; }
+  .header-cta { padding: 10px 14px; }
+}
+@media (max-width: 360px) {
+  .brand { font-size: 1rem; }
+  .header-cta { padding: 10px 12px; font-size: 0.875rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+
+
+.brand-logo {
+  height: clamp(38px, 4.5vw, 48px);
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+  display: block;
+  mix-blend-mode: multiply;
+}

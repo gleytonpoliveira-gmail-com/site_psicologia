@@ -1,0 +1,6 @@
+{
+  "name": "Psicóloga Andréia Francisca do Nascimento | TCC e ABA",
+  "description": "Website profissional da Psicóloga Andréia Francisca do Nascimento (CRP 21/07075). Psicoterapia Cognitivo-Comportamental (TCC) e Análise do Comportamento Aplicada (ABA) online e presencial.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

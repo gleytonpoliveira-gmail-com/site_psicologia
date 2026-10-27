@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Psicoterapia | Psicóloga Andréia Nascimento</title>
+  <meta name="theme-color" content="#4a6b6c">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Google tag (gtag.js) - Google Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-CONVERSAO_GOOGLE_ADS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    // Substitua 'AW-CONVERSAO_GOOGLE_ADS' pelo seu ID real quando ativar suas campanhas
+    gtag('config', 'AW-CONVERSAO_GOOGLE_ADS');
+
+    // Disparo limpo de conversão: NÃO abre window.open para evitar duplicar a aba do WhatsApp
+    function trackWhatsAppConversion() {
+      if (typeof gtag === 'function' && 'AW-CONVERSAO_GOOGLE_ADS' !== 'AW-CONVERSAO_GOOGLE_ADS') {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-CONVERSAO_GOOGLE_ADS/ROTULO_DE_CONVERSAO'
+        });
+      }
+    }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="Início - Dra. Andréia Francisca do Nascimento">
+        <picture>
+          <source srcset="images/logo-600.webp" type="image/webp">
+          <img class="brand-logo" src="images/logo-600.jpg" alt="Dra. Andréia Francisca do Nascimento - Psicóloga Clínica" width="200" height="58">
+        </picture>
+      </a>
+      <nav class="site-nav" id="menu-principal" aria-label="Menu principal">
+        <a href="../index.html">Início</a>
+        <a href="equipe.html">Sobre Mim</a>
+        <a class="active" href="psicoterapia.html">Psicoterapia</a>
+        <a href="terapia-online.html">Terapia Online</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+      <a class="header-cta" href="https://wa.me/5586988043923" onclick="trackWhatsAppConversion();" target="_blank" rel="noopener">Agendar</a>
+      <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="section">
+      <div class="container split-layout">
+        <div class="section-heading align-left">
+          <p class="eyebrow">Como funciona</p>
+          <h2>Um processo colaborativo e estruturado em metas</h2>
+          <p>A jornada terapêutica visa identificar pensamentos disfuncionais e contingências comportamentais que geram sofrimento para construir soluções duradouras.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item"><span>1</span><div><h3>Avaliação Inicial</h3><p>Análise funcional detalhada das queixas, histórico de vida e identificação de metas clínicas claras.</p></div></article>
+          <article class="timeline-item"><span>2</span><div><h3>Plano de Intervenção</h3><p>Desenvolvimento de estratégias personalizadas combinando TCC e técnicas comportamentais da ABA.</p></div></article>
+          <article class="timeline-item"><span>3</span><div><h3>Sessões Regulares</h3><p>Encontros focados na resolução de problemas atuais e treino de novas habilidades adaptativas.</p></div></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>Andréia Nascimento</h3>
+        <p>Psicoterapia Cognitivo-Comportamental e ABA online e presencial.</p>
+
+        <div class="visitor-counter">
+          <span class="counter-icon">👁️</span>
+          <span class="counter-label">Visitas ao site:</span>
+          <span id="site-visit-count" class="counter-number">...</span>
+        </div>
+      </div>
+      <div><h3>Contato</h3><a href="https://wa.me/5586988043923">+55 86 98804-3923</a></div>
+      <div><h3>Redes sociais</h3><a href="https://www.instagram.com/andreiapsinascimento/" target="_blank" rel="noopener">Instagram</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Andréia Francisca do Nascimento. Todos os direitos reservados.</p></div>
+  </footer>
+  <a class="whatsapp-float" href="https://wa.me/5586988043923" onclick="trackWhatsAppConversion();" target="_blank" rel="noopener">WhatsApp</a>
+
+
+  
+
+  <!-- Contador de Visitas com Sincronização e Google Ads Event -->
+  <script>
+    (function initVisitCounter() {
+      const counterEl = document.getElementById('site-visit-count');
+      if (!counterEl) return;
+
+      const namespace = 'psicologa-andreia-nascimento';
+      const key = 'visitas_site';
+      const storageKey = 'site_visit_counter_total';
+      const sessionKey = 'site_visited_session';
+
+      // Recupera ou inicializa contagem local partindo do zero
+      let localTotal = parseInt(localStorage.getItem(storageKey) || '1', 10);
+
+      // Incrementa se for uma sessão nova
+      if (!sessionStorage.getItem(sessionKey)) {
+        localTotal += 1;
+        localStorage.setItem(storageKey, localTotal);
+        sessionStorage.setItem(sessionKey, 'active');
+
+        // Dispara evento personalizado para o Google Ads / Analytics se a tag estiver ativa
+        if (typeof gtag === 'function') {
+          gtag('event', 'visitante_unico', {
+            'event_category': 'Engajamento',
+            'event_label': 'Nova Sessão de Usuário'
+          });
+        }
+      }
+
+      // API em nuvem para contagem pública com fallback imediato
+      fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`)
+        .then(res => res.json())
+        .then(data => {
+          if (data && typeof data.count !== 'undefined') {
+            counterEl.textContent = data.count.toLocaleString('pt-BR');
+          } else {
+            counterEl.textContent = localTotal.toLocaleString('pt-BR');
+          }
+        })
+        .catch(() => {
+          counterEl.textContent = localTotal.toLocaleString('pt-BR');
+        });
+    })();
+  </script>
+  <script src="menu.js" defer></script>
+</body>
+</html>

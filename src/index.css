@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-primary: #4a6b6c;
+    --color-primary-dark: #354f50;
+    --color-secondary: #d4af37;
+    --color-secondary-dark: #8a6d0b;
+    --color-bg: #faf8f5;
+    --color-soft: #f0f4f4;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: #2d3748;
+  }
+}
