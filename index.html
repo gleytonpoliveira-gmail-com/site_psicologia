@@ -4,8 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Cookiebot Consent Management Platform (Carregado obrigatoriamente antes do Google Ads) -->
+    <!-- Cookiebot Consent Management Platform (Carregado antes das tags de rastreamento) -->
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="6aec244e-7fab-4cc4-80fb-9f0fe8370311" data-blockingmode="auto" type="text/javascript"></script>
+
+    <!-- Google tag (gtag.js) - Google Analytics 4 & Google Ads -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NXG7DF3D6" data-cookieconsent="ignore"></script>
+    <script data-cookieconsent="ignore">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      // Google Analytics 4 (ID: G-0NXG7DF3D6)
+      gtag('config', 'G-0NXG7DF3D6');
+
+      // Google Ads (ID: AW-18309678858)
+      gtag('config', 'AW-18309678858');
+    </script>
+
+    <!-- Event snippet for Contato conversion page -->
+    <script data-cookieconsent="ignore">
+      gtag('event', 'conversion', {
+          'send_to': 'AW-18309678858/xLGpCN-D6asdEIqO3ppE',
+          'value': 1.0,
+          'currency': 'BRL'
+      });
+
+      // Google Ads Click Conversion Handler for WhatsApp / Contato
+      function gtag_report_conversion(url) {
+        if (typeof gtag === 'function') {
+          gtag('event', 'conversion', {
+            'send_to': 'AW-18309678858/xLGpCN-D6asdEIqO3ppE',
+            'value': 1.0,
+            'currency': 'BRL'
+          });
+        }
+        return true;
+      }
+    </script>
 
     <!-- Estilização personalizada do Cookiebot integrada à identidade visual do consultório -->
     <style id="cookiebot-custom-styling">
@@ -95,41 +130,6 @@
         color: #354f50 !important;
       }
     </style>
-
-    <!-- Google tag (gtag.js) - Google Analytics 4 & Google Ads com data-cookieconsent="ignore" -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NXG7DF3D6" data-cookieconsent="ignore"></script>
-    <script data-cookieconsent="ignore">
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      // Google Analytics 4 (ID: G-0NXG7DF3D6)
-      gtag('config', 'G-0NXG7DF3D6');
-
-      // Google Ads (ID: AW-18309678858)
-      gtag('config', 'AW-18309678858');
-    </script>
-
-    <!-- Event snippet for Contato conversion page com data-cookieconsent="ignore" -->
-    <script data-cookieconsent="ignore">
-      gtag('event', 'conversion', {
-          'send_to': 'AW-18309678858/xLGpCN-D6asdEIqO3ppE',
-          'value': 1.0,
-          'currency': 'BRL'
-      });
-
-      // Google Ads Click Conversion Handler for WhatsApp / Contato
-      function gtag_report_conversion(url) {
-        if (typeof gtag === 'function') {
-          gtag('event', 'conversion', {
-            'send_to': 'AW-18309678858/xLGpCN-D6asdEIqO3ppE',
-            'value': 1.0,
-            'currency': 'BRL'
-          });
-        }
-        return true;
-      }
-    </script>
     
     <!-- Primary Page Title & Meta Description (Portuguese, English, Spanish searchable) -->
     <title>Psicóloga Andréia Francisca | Terapia Online para Brasileiros no Exterior</title>
