@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CLINIC_INFO } from '../data/clinicalData';
 import { MessageCircle, Check, Send, Sparkles } from 'lucide-react';
+import { gtag_report_conversion } from '../utils/analytics';
 
 export const AppointmentSimulator: React.FC = () => {
   const [patientType, setPatientType] = useState<'adulto' | 'adolescente'>('adulto');
@@ -43,6 +44,7 @@ export const AppointmentSimulator: React.FC = () => {
 Aguardo orientações sobre horários compatíveis e valores. Obrigado(a)!`;
 
   const handleSendWhatsApp = () => {
+    gtag_report_conversion(`https://wa.me/${CLINIC_INFO.whatsappRaw}`);
     window.open(`https://wa.me/${CLINIC_INFO.whatsappRaw}?text=${encodeURIComponent(generatedMessage)}`, '_blank', 'noopener,noreferrer');
   };
 

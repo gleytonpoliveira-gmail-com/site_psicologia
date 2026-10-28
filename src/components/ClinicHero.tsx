@@ -1,6 +1,7 @@
 import React from 'react';
 import { CLINIC_INFO } from '../data/clinicalData';
 import { MessageCircle, ArrowRight, CheckCircle } from 'lucide-react';
+import { gtag_report_conversion } from '../utils/analytics';
 
 interface ClinicHeroProps {
   onScheduleClick: () => void;
@@ -43,7 +44,8 @@ export const ClinicHero: React.FC<ClinicHeroProps> = ({ onScheduleClick, onExplo
                 href={`https://wa.me/${CLINIC_INFO.whatsappRaw}?text=${encodeURIComponent('Olá, Andréia! Gostaria de informações sobre atendimento psicológico.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-white bg-[#4a6b6c] hover:bg-[#354f50] active:scale-98 rounded-lg shadow-sm transition-all focus-visible:outline-2 focus-visible:outline-[#4a6b6c] whitespace-nowrap"
+                onClick={() => gtag_report_conversion(`https://wa.me/${CLINIC_INFO.whatsappRaw}`)}
+                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-white bg-[#4a6b6c] hover:bg-[#354f50] active:scale-98 rounded-lg shadow-sm transition-all focus-visible:outline-2 focus-visible:outline-[#4a6b6c] whitespace-nowrap btn-whatsapp"
               >
                 <MessageCircle className="w-4 h-4 fill-current" />
                 <span>Agendar pelo WhatsApp</span>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CLINIC_INFO } from '../data/clinicalData';
 import { MessageCircle, Instagram, Mail, Globe, ExternalLink, Send, CheckCircle2 } from 'lucide-react';
-import { trackContactConversion } from '../utils/analytics';
+import { trackContactConversion, gtag_report_conversion } from '../utils/analytics';
 
 export const ClinicContact: React.FC = () => {
   const [name, setName] = useState('');
@@ -62,8 +62,8 @@ export const ClinicContact: React.FC = () => {
                 href={`https://wa.me/${CLINIC_INFO.whatsappRaw}?text=${encodeURIComponent('Olá, Andréia! Gostaria de informações sobre atendimento psicológico.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={trackContactConversion}
-                className="flex items-center justify-between p-4 bg-[#1a9b4b] hover:bg-[#14793b] text-white rounded-xl font-semibold text-sm transition-all shadow-xs"
+                onClick={() => gtag_report_conversion(`https://wa.me/${CLINIC_INFO.whatsappRaw}`)}
+                className="btn-whatsapp flex items-center justify-between p-4 bg-[#1a9b4b] hover:bg-[#14793b] text-white rounded-xl font-semibold text-sm transition-all shadow-xs"
               >
                 <div className="flex items-center gap-3">
                   <MessageCircle className="w-5 h-5 fill-current" />

@@ -14,6 +14,7 @@ import {
   Sparkles,
   ArrowRight
 } from 'lucide-react';
+import { gtag_report_conversion } from '../utils/analytics';
 
 interface TimeZoneOption {
   region: string;
@@ -79,6 +80,7 @@ export const BraziliansAbroad: React.FC = () => {
   const activeZone = TIME_ZONES[selectedZone];
 
   const handleAbroadWhatsApp = (customZoneText?: string) => {
+    gtag_report_conversion(`https://wa.me/${CLINIC_INFO.whatsappRaw}`);
     const text = `Olá, Andréia! Moro no exterior (${customZoneText || activeZone.region}) e gostaria de verificar disponibilidade de horários para atendimento psicológico online.`;
     window.open(`https://wa.me/${CLINIC_INFO.whatsappRaw}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
   };
