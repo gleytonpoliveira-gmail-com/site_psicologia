@@ -4,12 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Cookiebot Consent Management Platform (Carregado antes das tags de rastreamento) -->
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="6aec244e-7fab-4cc4-80fb-9f0fe8370311" data-blockingmode="auto" type="text/javascript"></script>
-
-    <!-- Google tag (gtag.js) - Google Analytics 4 & Google Ads -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NXG7DF3D6" data-cookieconsent="ignore"></script>
-    <script data-cookieconsent="ignore">
+    <!-- Google tag (gtag.js) - Google Analytics 4 & Google Ads (Carregado no topo para validação imediata) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NXG7DF3D6"></script>
+    <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -22,7 +19,7 @@
     </script>
 
     <!-- Event snippet for Contato conversion page -->
-    <script data-cookieconsent="ignore">
+    <script>
       gtag('event', 'conversion', {
           'send_to': 'AW-18309678858/xLGpCN-D6asdEIqO3ppE',
           'value': 1.0,
@@ -41,6 +38,9 @@
         return true;
       }
     </script>
+
+    <!-- Cookiebot Consent Banner (Sem bloqueio automático agressivo para não interromper a verificação do Google) -->
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="6aec244e-7fab-4cc4-80fb-9f0fe8370311" type="text/javascript"></script>
 
     <!-- Estilização personalizada do Cookiebot integrada à identidade visual do consultório -->
     <style id="cookiebot-custom-styling">

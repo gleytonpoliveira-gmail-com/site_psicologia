@@ -1,0 +1,25 @@
+# Allow all crawlers and search engines full access
+User-agent: *
+Allow: /
+
+# Explicitly allow Googlebot, Google-InspectionTool, and Google Ads/Analytics verification bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Google-InspectionTool
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: Google-Site-Verification
+Allow: /
+
+# Sitemap
+Sitemap: /sitemap.xml
