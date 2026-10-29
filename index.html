@@ -4,33 +4,57 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Google tag (gtag.js) - Google Analytics 4 & Google Ads (Carregado no topo para validação imediata) -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NXG7DF3D6"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      // Google Analytics 4 (ID: G-0NXG7DF3D6)
+      // Google Analytics 4
       gtag('config', 'G-0NXG7DF3D6');
 
-      // Google Ads (ID: AW-18309678858)
+      // Google Ads
       gtag('config', 'AW-18309678858');
     </script>
 
-    <!-- Event snippet for Contato conversion page -->
+    <!-- Event snippet for Contato conversion page (Google Analytics 4 & Google Ads) -->
     <script>
+      // Evento de conversão para Google Ads e Google Analytics 4
       gtag('event', 'conversion', {
           'send_to': 'AW-18309678858/xLGpCN-D6asdEIqO3ppE',
           'value': 1.0,
           'currency': 'BRL'
       });
+      gtag('event', 'generate_lead', {
+          'event_category': 'Contato',
+          'event_label': 'Visita Contato',
+          'value': 1.0,
+          'currency': 'BRL'
+      });
 
-      // Google Ads Click Conversion Handler for WhatsApp / Contato
+      // Google Ads & Google Analytics 4 Click Conversion Handler for WhatsApp / Contato
       function gtag_report_conversion(url) {
         if (typeof gtag === 'function') {
+          // Google Ads Conversion
           gtag('event', 'conversion', {
             'send_to': 'AW-18309678858/xLGpCN-D6asdEIqO3ppE',
+            'value': 1.0,
+            'currency': 'BRL'
+          });
+          // Google Analytics 4 Conversions (Key Events)
+          gtag('event', 'generate_lead', {
+            'event_category': 'WhatsApp',
+            'event_label': 'Clique no WhatsApp',
+            'value': 1.0,
+            'currency': 'BRL'
+          });
+          gtag('event', 'contato_whatsapp', {
+            'value': 1.0,
+            'currency': 'BRL'
+          });
+          gtag('event', 'conversion', {
+            'event_category': 'Leads',
             'value': 1.0,
             'currency': 'BRL'
           });
@@ -39,7 +63,7 @@
       }
     </script>
 
-    <!-- Cookiebot Consent Banner (Sem bloqueio automático agressivo para não interromper a verificação do Google) -->
+    <!-- Cookiebot Consent Management Platform (Carregado após o Google tag para não impedir a validação) -->
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="6aec244e-7fab-4cc4-80fb-9f0fe8370311" type="text/javascript"></script>
 
     <!-- Estilização personalizada do Cookiebot integrada à identidade visual do consultório -->
